@@ -33,7 +33,7 @@ function Update-ProtectorFiles {
     }
 
     # Configurações
-    $BaseUrl   = "https://github.com/Clueroi/system-defenser.git"
+    $BaseUrl   = "https://raw.githubusercontent.com/Clueroi/protector/blob/main"
     $BasePath  = "C:\Protector"
 
     # Cache busting permanente (ANTI GitHub RAW cache)
