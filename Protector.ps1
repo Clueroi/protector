@@ -738,7 +738,7 @@ Enable-QuickEditProtection
 Enable-ConsoleAppearance -ForceMaximize
 Start-Logging
 Clear-Host
-Show-Header -Text 'Protector 360 v1.5 — Manutenção e Otimização'
+Show-Header -Text 'Protector v1.5 — Manutenção e Otimização'
 
 try {
   # 2) Carregar funções do repositório

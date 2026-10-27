@@ -59,7 +59,7 @@ function Fail {
 try { [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12 } catch {}
 New-Item -ItemType Directory -Path 'C:\Protector\Functions' -Force -ErrorAction SilentlyContinue | Out-Null   # 1ª execução em máquina limpa
 
-$BaseUrl  = "https://raw.githubusercontent.com/IT4You-Scripts/Protector360/main/Functions/Update-ProtectorFiles.ps1"
+$BaseUrl  = "https://raw.githubusercontent.com/Clueroi/protector/blob/main/Functions/Update-ProtectorFiles.ps1"
 $DestPath = "C:\Protector\Functions\Update-ProtectorFiles.ps1"
 $NoCache  = "?nocache=$(Get-Date -Format 'yyyyMMddHHmmss')"
 
@@ -73,7 +73,7 @@ Invoke-WebRequest -Uri ($BaseUrl + $NoCache) `
                   -ErrorAction SilentlyContinue
 
 
-# Atualização dos arquivos do Protector 360 usando a função Update-ProtectorFiles.ps1, que foi atualizada no cod acima
+# Atualização dos arquivos do Protector usando a função Update-ProtectorFiles.ps1, que foi atualizada no cod acima
 $updater = "C:\Protector\Functions\Update-ProtectorFiles.ps1"
 if (Test-Path $updater) {
     . $updater

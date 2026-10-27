@@ -68,7 +68,7 @@ Invoke-WebRequest -Uri ($BaseUrl + $NoCache) `
                   -ErrorAction SilentlyContinue
 
 
-# Atualização dos arquivos do Protector 360 usando a função Update-ProtectorFiles.ps1, que foi atualizada no cod acima
+# Atualização dos arquivos do Protector usando a função Update-ProtectorFiles.ps1, que foi atualizada no cod acima
 $updater = "C:\Protector\Functions\Update-ProtectorFiles.ps1"
 if (Test-Path $updater) {
     . $updater
