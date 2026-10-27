@@ -162,11 +162,7 @@ $PolicyStatus = "OK"
 # LIMPEZA FINAL
 # =====================================
 
-Step "Limpando itens antigos..."
 
-if (Test-Path "C:\IT4You") {
-    Remove-Item "C:\IT4You" -Recurse -Force
-}
 
 Get-ScheduledTask |
 Where-Object { $_.TaskName -like "*Manutenção Automatizada*" } |

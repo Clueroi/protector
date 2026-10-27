@@ -1091,7 +1091,6 @@ Write-Host ""
 # Enviar para a API do Protector
 # ------------------------------------------------------------------------------
 #$apiUrl = "http://192.168.0.210:8000/insert-single"
-$apiUrl = "https://protector.it4you.com.br/api/insert-single"
 
 
 try {

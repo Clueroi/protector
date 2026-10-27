@@ -2,7 +2,7 @@
 
 <#
 .SYNOPSIS
-    Framework de Manutenção Preventiva, Atualização e Otimização para Windows 10 e 11.
+    Framework de Manutenção, Atualização e Otimização para Windows 10 e 11.
 
 .DESCRIPTION
     Este script orquestra um conjunto de funções organizadas em etapas cronológicas para:
@@ -44,7 +44,7 @@
     - Compatível com o sistema operacional Microsoft Windows
 
 .AUTHOR
-    Tato, IT4You Ltda
+    Eric Romero.
 .VERSION
     1.5
 .LASTUPDATED
@@ -761,7 +761,6 @@ try {
     'Optimize-SSD.ps1',
     'Optimize-HDD.ps1',
     'Scan-AntiMalware.ps1',
-    'Confirm-MacriumBackup.ps1',
     'Send-LogToServer.ps1',
     'Show-ProtectorEndUI.ps1',
     'Write-JsonResult.ps1'

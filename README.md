@@ -1,5 +1,5 @@
 # Protector
-P
+
 O Protector reúne scripts PowerShell para manutenção preventiva e inventário de computadores Windows. O fluxo principal organiza as tarefas em fases, registra resultados em log e gera um relatório JSON.
 
 > **Atenção:** algumas rotinas alteram configurações do Windows, removem arquivos, atualizam programas ou criam regras no Firewall. Leia as descrições antes de executar e use uma sessão elevada quando necessário.
@@ -7,10 +7,27 @@ O Protector reúne scripts PowerShell para manutenção preventiva e inventário
 ## Requisitos
 
 - Windows 10 ou 11.
-- PowerShell 7 ou superior para o orquestrador principal.
+- Windows PowerShell 5.1 (incluído no Windows 10/11) ou PowerShell 7.
 - Privilégios de Administrador para tarefas de manutenção, limpeza, atualização, Firewall e configuração do sistema.
 - Acesso à internet para instalação/atualização de componentes e programas.
 - `winget` para as rotinas de atualização de aplicativos e Microsoft Store.
+
+## Executar pelo PowerShell
+
+O Agendador de Tarefas **não é necessário** para iniciar o Protector. Abra o PowerShell e execute o iniciador, que usa por padrão o `Protector.ps1` localizado na mesma pasta:
+
+```powershell
+Set-Location C:\Protector
+.\RodaProtector.ps1
+```
+
+Também é possível iniciar diretamente o script principal:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Protector\Protector.ps1
+```
+
+O script principal solicita elevação pelo UAC quando necessário. O iniciador não baixa atualizações automaticamente; assim, uma falha de URL do atualizador não impede a execução dos arquivos locais.
 
 ## Fluxo principal
 
@@ -146,11 +163,11 @@ São funções internas de apoio — normalmente não são etapas de manutençã
 |---|---|
 | `Protector.ps1` | Orquestra fases, carrega as funções, produz resumo, log e JSON. |
 | `Protector (bom).ps1` | Cópia/variante do orquestrador; não representa uma função adicional. |
-| `RodaProtector.ps1` | Inicializa/atualiza arquivos e inicia o script principal com os parâmetros recebidos. |
+| `RodaProtector.ps1` | Inicia o script principal local com os parâmetros recebidos. Usa o `Protector.ps1` da mesma pasta por padrão e não depende do Agendador de Tarefas nem do download automático do atualizador. |
 | `ElevaProtector.ps1` | Prepara credenciais e argumentos e inicia o processo do Protector com as credenciais configuradas. |
 | `Prepara.ps1` | Prepara o ambiente: Winget, PowerShell 7, PATH, alias, associação de `.ps1` e política de execução; também remove itens antigos específicos. |
 | `CriaCredenciais.ps1` | Solicita credenciais, cria uma chave AES se necessário e salva a senha criptografada e o usuário em XML. Proteja o arquivo de chave e o XML. |
-| `Atualiza.ps1` | Atualiza scripts e imagens da instalação em `C:\Protector`. |
+| `Atualiza.ps1` | Tenta atualizar scripts e imagens da instalação em `C:\Protector`; a execução do atualizador é separada do iniciador. |
 | `Optimize-JsonReport.ps1` | Trata o JSON de inventário: normaliza mensagens, separa hardware/software, estrutura redes, armazenamento e partições e salva o resultado tratado. |
 | `Optimize-JsonReport - Copia.ps1` | Cópia/variante do script de tratamento JSON; não é uma função adicional do fluxo principal. |
 
@@ -167,7 +184,8 @@ São funções internas de apoio — normalmente não são etapas de manutençã
 
 ## Limitações e observações desta cópia
 
-- O orquestrador referencia arquivos com nomes `Protector` que, nesta cópia, aparecem com nomes `Protector` em alguns casos. Confira e alinhe os nomes dos arquivos antes de executar a instalação.
+- O script principal espera os arquivos carregados em uma subpasta `Functions`; mantenha essa pasta junto de `Protector.ps1`.
+- Os endereços de download configurados nos scripts de atualização desta cópia não estão no formato esperado pelo GitHub Raw. O `RodaProtector.ps1` não executa mais essa atualização automaticamente; revise as URLs antes de executar `Atualiza.ps1` ou `Update-ProtectorFiles`.
 - O orquestrador referencia `Confirm-MacriumBackup`, mas esse script/função não está presente nesta cópia. A confirmação é opcional no código principal.
 - O envio do log para servidor está implementado em `Send-LogToServer`, mas a chamada correspondente no fim do orquestrador está comentada.
 - O processamento JSON procura arquivos e diretórios em caminhos de instalação específicos. Ao executar fora da instalação esperada, revise os caminhos em `C:\Protector`.

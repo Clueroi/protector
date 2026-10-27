@@ -1,10 +1,8 @@
 ﻿# RodaProtector.ps1
 [CmdletBinding()]
 param (
-    # Caminho do PowerShell 7
-    [string]$PwshPath = (Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'),   # Windows PowerShell 5.1 (já vem no Windows)
-    # Caminho do script principal Protector
-    [string]$ScriptPath = 'C:\Protector\Protector.ps1',
+    [string]$PwshPath = (Get-Process -Id $PID).Path,
+    [string]$ScriptPath = (Join-Path $PSScriptRoot 'Protector.ps1'),
 
     # Opções de janela
     [switch]$NoWindow,
@@ -52,41 +50,10 @@ function Fail {
 
 
 
-# -------------------------------------------------------------------------------------------------------------------------
-#region BootStrap - Atualiza somente o arquivo Update-ProtectorFiles.ps1 — versão mínima e silenciosa
-# -------------------------------------------------------------------------------------------------------------------------
-
-try { [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12 } catch {}
-New-Item -ItemType Directory -Path 'C:\Protector\Functions' -Force -ErrorAction SilentlyContinue | Out-Null   # 1ª execução em máquina limpa
-
-$BaseUrl  = "https://raw.githubusercontent.com/Clueroi/protector/blob/main/Functions/Update-ProtectorFiles.ps1"
-$DestPath = "C:\Protector\Functions\Update-ProtectorFiles.ps1"
-$NoCache  = "?nocache=$(Get-Date -Format 'yyyyMMddHHmmss')"
-
-# Remove o arquivo antigo
-# Remove-Item -Path $DestPath -Force -ErrorAction SilentlyContinue
-
-# Baixa o novo arquivo
-Invoke-WebRequest -Uri ($BaseUrl + $NoCache) `
-                  -OutFile $DestPath `
-                  -UseBasicParsing `
-                  -ErrorAction SilentlyContinue
-
-
-# Atualização dos arquivos do Protector usando a função Update-ProtectorFiles.ps1, que foi atualizada no cod acima
-$updater = "C:\Protector\Functions\Update-ProtectorFiles.ps1"
-if (Test-Path $updater) {
-    . $updater
-    Update-ProtectorFiles
-}
-
-#endregion
-
-
 # -------------------------------
 # Validações
 # -------------------------------
-if (-not (Test-Path -LiteralPath $PwshPath))   { Fail "powershell.exe não encontrado em: $PwshPath" }
+if (-not (Test-Path -LiteralPath $PwshPath))   { Fail "Executável do PowerShell não encontrado em: $PwshPath" }
 if (-not (Test-Path -LiteralPath $ScriptPath)) { Fail "Protector.ps1 não encontrado em: $ScriptPath" }
 
 # Desbloqueia o script alvo
@@ -99,7 +66,6 @@ $workDir = Split-Path -Path $ScriptPath -Parent
 # Montagem segura dos argumentos
 # -------------------------------
 $argList = @('-ExecutionPolicy','Bypass','-NoProfile','-File',$ScriptPath)
-if ($NonInteractive) { $argList += '-NonInteractive' }
 if ($ExecutaFases)   { $argList += '-ExecutaFases'; $argList += ($ExecutaFases -join ',') }
 if ($PulaFases)      { $argList += '-PulaFases'; $argList += ($PulaFases -join ',') }
 if ($LogLevel)       { $argList += '-LogLevel'; $argList += $LogLevel }

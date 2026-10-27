@@ -84,24 +84,23 @@ else {
 
     # Conteúdo inicial
     $textBlock.Inlines.Add("Prezado(a) usuário(a),`n`n")
-    $textBlock.Inlines.Add("Estamos dando início à Manutenção Preventiva Automatizada em seu computador. Este procedimento é realizado de forma totalmente autônoma, diretamente no seu computador, ")
-    $inline1 = New-Object Windows.Documents.Run("sem qualquer acesso remoto por parte de nossa equipe técnica")
+    $textBlock.Inlines.Add("Dando início à Manutenção Automatizada em seu computador. Este procedimento é realizado, se configurado corretamente, de forma automática")
     $inline1.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inline1)
     $textBlock.Inlines.Add(".`n`n")
-    $textBlock.Inlines.Add("A execução segue o calendário de vistorias agendado e comunicado por e-mail, garantindo segurança e eficiência. Utilizamos Inteligência Artificial para analisar o sistema com precisão, identificar inconsistências e aplicar soluções automatizadas adaptadas ao seu equipamento. Durante a execução, solicitamos que evite utilizar o computador, a fim de assegurar a integridade da manutenção e prevenir interferências.`n`n")
-    $textBlock.Inlines.Add("Em caso de dúvidas, estamos à disposição pelos canais oficiais:`n`n")
+    $textBlock.Inlines.Add("A execução segue um calendário, peço a gentileza de deixá-lo trabalhar.`n`n")
+    $textBlock.Inlines.Add("Em caso de dúvidas, pode me contatar:`n`n")
     $textBlock.Inlines.Add("Telefone/WhatsApp: ")
-    $inline2 = New-Object Windows.Documents.Run("(11) 9.7191-1500")
+    $inline2 = New-Object Windows.Documents.Run("(11) 93396-7294")
     $inline2.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inline2)
     $textBlock.Inlines.Add("   E-mail: ")
-    $inline3 = New-Object Windows.Documents.Run("suporte@it4you.com.br")
+    $inline3 = New-Object Windows.Documents.Run("eriicsouzaromeroo@gmail.com")
     $inline3.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inline3)
     $textBlock.Inlines.Add("`n`n")
     $textBlock.Inlines.Add("Atenciosamente, ")
-    $inline4 = New-Object Windows.Documents.Run("Equipe IT4You")
+    $inline4 = New-Object Windows.Documents.Run("ERIC ROMERO")
     $inline4.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inline4)
 

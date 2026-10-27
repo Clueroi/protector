@@ -2,7 +2,7 @@
     [CmdletBinding()]
     param(
         [string]$LogoPath = 'C:\Protector\Assets\Images\logotipo.png',
-        [string]$Title = 'Protector - Manutenção Automatizada'
+        [string]$Title = 'Protector - Manutenção Automatizada em POWERSHELL'
     )
 
     Add-Type -AssemblyName PresentationFramework
@@ -74,13 +74,13 @@
     $textBlock.Margin = '20,0,20,0'
 
     # Conteúdo
-    $textBlock.Inlines.Add("A Manutenção Preventiva Automatizada foi finalizada com ")
+    $textBlock.Inlines.Add("A Manutenção Automatizada foi finalizada com ")
     $inlineSucesso = New-Object Windows.Documents.Run("Sucesso")
     $inlineSucesso.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inlineSucesso)
     $textBlock.Inlines.Add("!`n`n")
 
-    $textBlock.Inlines.Add("Agradecemos imensamente sua paciência e compreensão durante o processo, que durou ")
+    $textBlock.Inlines.Add("Agradeço imensamente sua paciência e por testar o sistema que durou ")
 
     $inlineTempo = New-Object Windows.Documents.Run("$global:tempoFormatado")
     $inlineTempo.Foreground = '#90EE90'
@@ -109,13 +109,13 @@
     # $textBlock.Inlines.Add("`n`n")
 
     $textBlock.Inlines.Add("   E-mail: ")
-    $inlineEmail = New-Object Windows.Documents.Run("suporte@it4you.com.br")
+    $inlineEmail = New-Object Windows.Documents.Run("eriicsouzaromeroo@gmail.com")
     $inlineEmail.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inlineEmail)
     $textBlock.Inlines.Add("`n`n")
 
     $textBlock.Inlines.Add("Atenciosamente, ")
-    $inlineEquipe = New-Object Windows.Documents.Run("Equipe IT4You")
+    $inlineEquipe = New-Object Windows.Documents.Run("ERIC ROMERO")
     $inlineEquipe.Foreground = '#90EE90'
     $textBlock.Inlines.Add($inlineEquipe)
 
