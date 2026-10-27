@@ -1,6 +1,6 @@
 # Protector
 
-O Protector reúne scripts PowerShell para manutenção preventiva e inventário de computadores Windows. O fluxo principal organiza as tarefas em fases, registra resultados em log e gera um relatório JSON.
+O Protector reúne scripts PowerShell para manutenção e inventário de computadores Windows. O fluxo principal organiza as tarefas em fases, registra resultados em log e gera um relatório JSON.
 
 > **Atenção:** algumas rotinas alteram configurações do Windows, removem arquivos, atualizam programas ou criam regras no Firewall. Leia as descrições antes de executar e use uma sessão elevada quando necessário.
 

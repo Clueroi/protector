@@ -90,7 +90,7 @@
 
     $textBlock.Inlines.Add("Entendemos que esse tempo de espera pode ter causado algum inconveniente, mas gostaríamos de ressaltar a importância dessa manutenção para garantir o bom funcionamento e a longevidade do seu equipamento.`n`n")
 
-    $textBlock.Inlines.Add("Durante a manutenção preventiva, foram realizadas diversas tarefas importantes, tais como:`n`n")
+    $textBlock.Inlines.Add("Durante a manutenção, foram realizadas diversas tarefas importantes, tais como:`n`n")
     $textBlock.Inlines.Add("    - Inventário de Hardware e Software`n")
     $textBlock.Inlines.Add("    - Integridade do sistema`n")
     $textBlock.Inlines.Add("    - Otimizações estruturais`n")

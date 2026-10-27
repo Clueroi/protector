@@ -96,7 +96,7 @@
         }
     }
     catch {
-        Write-Log "ERRO: Falha durante a manutenção preventiva: $($_.Exception.Message)"
+        Write-Log "ERRO: Falha durante a manutenção: $($_.Exception.Message)"
         throw
     }
 }
